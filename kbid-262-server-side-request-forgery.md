@@ -53,10 +53,10 @@ Warning: The -P0 option is deprecated. Please use -Pn
 Starting Nmap 7.70 ( https://nmap.org ) at 2019-03-24 10:03 CET
 NSE: Loaded 43 scripts for scanning.
 Initiating Connect Scan at 10:03
-Scanning localhost (127.0.0.1) [1000 ports]
+Scanning 127.0.0.1 (127.0.0.1) [1000 ports]
 Completed Connect Scan at 10:03, 5.41s elapsed (1000 total ports)
 Initiating Service scan at 10:03
-Scanning 1 services on localhost (127.0.0.1)
+Scanning 1 services on 127.0.0.1 (127.0.0.1)
 Completed Service scan at 10:03, 17.02s elapsed (1 services on 1 host)
 NSE: Script scanning 127.0.0.1.
 NSE: Starting runlevel 1 (of 2) scan.
@@ -65,7 +65,7 @@ Completed NSE at 10:03, 0.07s elapsed
 NSE: Starting runlevel 2 (of 2) scan.
 Initiating NSE at 10:03
 Completed NSE at 10:03, 0.01s elapsed
-Nmap scan report for localhost (127.0.0.1)
+Nmap scan report for 127.0.0.1 (127.0.0.1)
 Host is up, received user-set (0.00027s latency).
 Scanned at 2019-03-24 10:03:24 CET for 23s
 

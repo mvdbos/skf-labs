@@ -51,7 +51,7 @@ First, let's check the application to see if there are any sources being loaded 
 When inspecting the network tab we see that the application fails to load a JS file to the URL 
 
 ```
-https://localhost:8081/script-provider/javascript.js
+https://127.0.0.1:8081/script-provider/javascript.js
 ```
 
 *note: in a penetration test we would now see if the domain that is used to grab the js source file from is free for us to register*

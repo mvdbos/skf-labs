@@ -68,7 +68,7 @@ As you can see this file is not allowed to be uploaded. Also when we upload file
 The tool for example we can use for this is called Wfuzz and can be started with the following command:
 
 ```bash
-wfuzz -c -z file,/usr/share/wfuzz/wordlist/general/common.txt --hc 404 http://localhost:5000/FUZZ
+wfuzz -c -z file,/usr/share/wfuzz/wordlist/general/common.txt --hc 404 http://127.0.0.1:5000/FUZZ
 ```
 
 Unfortunately Wfuzz doesnt find any upload directories where our file is being stored. So lets have a look at the application what other folders are available and are accessible.
@@ -82,7 +82,7 @@ The application uses different directories to store the stylesheets and images t
 We have tried the path traversal directory injection and we got the message back from the application that the file was successfully uploaded. Now lets see if we can access our file.
 
 ```text
-http://localhost:5000/static/img/Test.png
+http://127.0.0.1:5000/static/img/Test.png
 ```
 
 And there it is our file was being uploaded successfully in the static/img folder of the application and because this is accessible by the application we can access our file.

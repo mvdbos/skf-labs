@@ -7,7 +7,7 @@ $ sudo docker pull blabla1337/owasp-skf-lab:jwt-secret
 ```
 
 ```text
-$ sudo docker run -ti -p localhost:5000:5000 blabla1337/owasp-skf-lab:jwt-secret
+$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:jwt-secret
 ```
 
 {% hint style="success" %}

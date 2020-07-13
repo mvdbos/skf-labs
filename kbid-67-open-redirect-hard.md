@@ -41,7 +41,7 @@ $ python3 <labname>
 
 The application shows that there is a new version of the website available somewhere, and a click on the button "Go to new website" will redirect you to it. 
 
-If we click on the button we will be redirected on the new page [http://localhost:5000/newsite](http://localhost:5000/newsite)
+If we click on the button we will be redirected on the new page [http://127.0.0.1:5000/newsite](http://127.0.0.1:5000/newsite)
 
 #### Step 2
 

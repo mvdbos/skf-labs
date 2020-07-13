@@ -66,6 +66,6 @@ def page_not_found(e):
 if __name__ == '__main__':
     app.run(host = '0.0.0.0')
 
-#curl --header "Content-Type: application/json" --request POST --data '{"username":"admin","password":"admin"}' http://localhost:5000/auth
-#curl -i -H "Accept: application/json" -H "Authorization: JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NDgwOTgxNjEsImlhdCI6MTU0ODA5Nzg2MSwibmJmIjoxNTQ4MDk3ODYxLCJpZGVudGl0eSI6Mn0.vUnhorZy454Iw01WFDsgigu0YpCMzhxx-hPGTuFpwCk" http://localhost:5000/protected
+#curl --header "Content-Type: application/json" --request POST --data '{"username":"admin","password":"admin"}' http://127.0.0.1:5000/auth
+#curl -i -H "Accept: application/json" -H "Authorization: JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NDgwOTgxNjEsImlhdCI6MTU0ODA5Nzg2MSwibmJmIjoxNTQ4MDk3ODYxLCJpZGVudGl0eSI6Mn0.vUnhorZy454Iw01WFDsgigu0YpCMzhxx-hPGTuFpwCk" http://127.0.0.1:5000/protected
 #Null cipher header: eyJ0eXAiOiJKV1QiLCAiYWxnIjoiTk9ORSJ9.

