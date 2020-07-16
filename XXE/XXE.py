@@ -1,4 +1,5 @@
-from xml.dom.pulldom import START_ELEMENT, parseString
+from defusedxml.pulldom import parseString
+from xml.dom.pulldom import START_ELEMENT
 import xml
 from flask import Flask, render_template, request
 
