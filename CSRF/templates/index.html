@@ -64,6 +64,7 @@
 					<div class="panel-body">
 						<div class="col-md-6">
 							<form method="post" action="/login">
+							<input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
 							<input type="text" class="form-control" name="username" placeholder="username"/><br/>
                 			<input type="password" class="form-control" name="password" placeholder="password"/><br/>
                			    <button class="btn btn-primary" type="submit">Submit Button</button>

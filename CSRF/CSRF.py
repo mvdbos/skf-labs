@@ -5,7 +5,8 @@ from flask import Flask, request, url_for, render_template, redirect, make_respo
 app = Flask(__name__, static_url_path='/static', static_folder='static')
 
 app.config['DEBUG'] = True
-
+from flask_wtf.csrf import CSRFProtect
+csrf = CSRFProtect(app)
 
 # Load default config and override config from an environment variable
 # You can also replace password with static password:  PASSWORD='pass!@#example'

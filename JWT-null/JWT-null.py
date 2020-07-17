@@ -43,9 +43,13 @@ def protected():
     token = request.headers['AUTHORIZATION']
     try:
         jwt_header,jwt_claims,jwt_signature = token[4:].split(".")
+        print("SPLIT")
         decoded_jwt_header = base64.b64decode(jwt_header).decode("utf-8", "ignore")
+        print("B64decode")
         headers = json.loads(decoded_jwt_header)
+        print("jsondecode")
         alg = headers['alg']
+        print(headers)
         if alg=='NONE':
             claims = jwt.decode(token[4:],verify=False)
         else:
